@@ -21,7 +21,7 @@ def main(
     lora_dict: Optional[Dict[str, float]] = None,
     prompt: str = "1girl with brown dog ears, thick frame glasses",
     scale: float = 1.0,
-    acceleration: Literal["none", "xformers", "tensorrt"] = "xformers",
+    acceleration: Literal["none", "xformers", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
     use_denoising_batch: bool = True,
     enable_similar_image_filter: bool = True,
     seed: int = 2,

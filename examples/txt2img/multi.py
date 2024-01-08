@@ -19,7 +19,7 @@ def main(
     width: int = 512,
     height: int = 512,
     frame_buffer_size: int = 3,
-    acceleration: Literal["none", "xformers", "tensorrt"] = "xformers",
+    acceleration: Literal["none", "xformers", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
     seed: int = 2,
 ):
     

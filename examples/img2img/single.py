@@ -21,7 +21,7 @@ def main(
     negative_prompt: str = "low quality, bad quality, blurry, low resolution",
     width: int = 512,
     height: int = 512,
-    acceleration: Literal["none", "xformers", "tensorrt"] = "xformers",
+    acceleration: Literal["none", "xformers", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
     use_denoising_batch: bool = True,
     guidance_scale: float = 1.2,
     cfg_type: Literal["none", "full", "self", "initialize"] = "self",

@@ -19,7 +19,7 @@ def main(
     prompt: str = "1girl with brown dog hair, thick glasses, smiling",
     width: int = 512,
     height: int = 512,
-    acceleration: Literal["none", "xformers", "tensorrt"] = "xformers",
+    acceleration: Literal["none", "xformers", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
     use_denoising_batch: bool = False,
     seed: int = 2,
 ):

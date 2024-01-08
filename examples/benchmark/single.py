@@ -32,7 +32,7 @@ def run(
     width: int = 512,
     height: int = 512,
     warmup: int = 10,
-    acceleration: Literal["none", "xformers", "tensorrt"] = "xformers",
+    acceleration: Literal["none", "xformers", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
     device_ids: Optional[List[int]] = None,
     use_denoising_batch: bool = True,
     seed: int = 2,
