@@ -15,6 +15,12 @@ from utils.wrapper import StreamDiffusionWrapper
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
+if torch.cuda.is_available():
+    device = "cuda"
+elif torch.backends.mps.is_available():
+    device = "mps"
+else:
+    device = "cpu"
 
 def main(
     input: str,
@@ -66,6 +72,7 @@ def main(
     height = int(video.shape[2] * scale)
 
     stream = StreamDiffusionWrapper(
+        device=device,
         model_id_or_path=model_id,
         lora_dict=lora_dict,
         t_index_list=[35, 45],

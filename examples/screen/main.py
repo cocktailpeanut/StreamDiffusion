@@ -21,6 +21,13 @@ inputs = []
 top = 0
 left = 0
 
+if torch.cuda.is_available():
+    device = "cuda"
+elif torch.backends.mps.is_available():
+    device = "mps"
+else:
+    device = "cpu"
+
 def screen(
     event: threading.Event,
     height: int = 512,
@@ -144,6 +151,7 @@ def image_generation_process(
     
     global inputs
     stream = StreamDiffusionWrapper(
+        device=device,
         model_id_or_path=model_id_or_path,
         lora_dict=lora_dict,
         t_index_list=[32, 45],

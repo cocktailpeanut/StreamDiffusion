@@ -5,6 +5,7 @@ import time
 import tkinter as tk
 from multiprocessing import Process, Queue, get_context
 from typing import List, Literal
+import torch
 
 import fire
 from PIL import Image, ImageTk
@@ -19,6 +20,12 @@ from utils.wrapper import StreamDiffusionWrapper
 
 image_update_counter = 0
 
+if torch.cuda.is_available():
+    device = "cuda"
+elif torch.backends.mps.is_available():
+    device = "mps"
+else:
+    device = "cpu"
 
 def update_image(image_data: Image.Image, labels: List[tk.Label]) -> None:
     """
