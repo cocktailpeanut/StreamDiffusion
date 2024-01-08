@@ -6,6 +6,12 @@ import os
 
 SAFETY_CHECKER = os.environ.get("SAFETY_CHECKER", "False") == "True"
 
+if torch.cuda.is_available():
+    device = "cuda"
+elif torch.backends.mps.is_available():
+    device = "mps"
+else:
+    device = "cpu"
 
 @dataclass
 class Config:
@@ -34,7 +40,7 @@ class Config:
     # TinyVAE model
     vae_id: str = "madebyollin/taesd"
     # Device to use
-    device: torch.device = torch.device("cuda")
+    device: torch.device = device
     # Data type
     dtype: torch.dtype = torch.float16
     # acceleration
