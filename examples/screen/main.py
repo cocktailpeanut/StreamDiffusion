@@ -85,7 +85,7 @@ def image_generation_process(
     frame_buffer_size: int,
     width: int,
     height: int,
-    acceleration: Literal["none", "xformers", "tensorrt"],
+    acceleration: Literal["none", "xformers", "sfast", "tensorrt"],
     use_denoising_batch: bool,
     seed: int,
     cfg_type: Literal["none", "full", "self", "initialize"],
@@ -122,7 +122,7 @@ def image_generation_process(
         The width of the image, by default 512.
     height : int, optional
         The height of the image, by default 512.
-    acceleration : Literal["none", "xformers", "tensorrt"], optional
+    acceleration : Literal["none", "xformers", "sfast", "tensorrt"], optional
         The acceleration method, by default "tensorrt".
     use_denoising_batch : bool, optional
         Whether to use denoising batch or not, by default True.
@@ -225,7 +225,7 @@ def main(
     frame_buffer_size: int = 1,
     width: int = 512,
     height: int = 512,
-    acceleration: Literal["none", "xformers", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
+    acceleration: Literal["none", "xformers", "sfast", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
     use_denoising_batch: bool = True,
     seed: int = 2,
     cfg_type: Literal["none", "full", "self", "initialize"] = "self",

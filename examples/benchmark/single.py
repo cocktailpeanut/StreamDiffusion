@@ -32,7 +32,7 @@ def run(
     width: int = 512,
     height: int = 512,
     warmup: int = 10,
-    acceleration: Literal["none", "xformers", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
+    acceleration: Literal["none", "xformers", "sfast", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
     device_ids: Optional[List[int]] = None,
     use_denoising_batch: bool = True,
     seed: int = 2,
@@ -64,7 +64,7 @@ def run(
         The height of the image, by default 512.
     warmup : int, optional
         The number of warmup steps to perform, by default 10.
-    acceleration : Literal["none", "xformers", "tensorrt"], optional
+    acceleration : Literal["none", "xformers", "sfast", "tensorrt"], optional
         The acceleration method, by default "tensorrt".
     device_ids : Optional[List[int]], optional
         The device ids to use for DataParallel, by default None.

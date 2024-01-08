@@ -21,7 +21,7 @@ def main(
     negative_prompt: str = "low quality, bad quality, blurry, low resolution",
     width: int = 512,
     height: int = 512,
-    acceleration: Literal["none", "xformers", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
+    acceleration: Literal["none", "xformers", "sfast", "tensorrt"] = os.environ.get("ACCELERATION", "xformers"),
     use_denoising_batch: bool = True,
     guidance_scale: float = 1.2,
     cfg_type: Literal["none", "full", "self", "initialize"] = "self",
@@ -51,7 +51,7 @@ def main(
         The width of the image, by default 512.
     height : int, optional
         The height of the image, by default 512.
-    acceleration : Literal["none", "xformers", "tensorrt"], optional
+    acceleration : Literal["none", "xformers", "sfast", "tensorrt"], optional
         The acceleration method, by default "tensorrt".
     use_denoising_batch : bool, optional
         Whether to use denoising batch or not, by default True.

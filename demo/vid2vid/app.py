@@ -29,7 +29,7 @@ def main(
     lora_dict: Optional[Dict[str, float]] = None,
     prompt: str = "1girl with brown dog ears, thick frame glasses",
     scale: float = 1.0,
-    acceleration: Literal["none", "xformers", "tensorrt"] = "xformers",
+    acceleration: Literal["none", "xformers", "sfast", "tensorrt"] = "xformers",
     use_denoising_batch: bool = True,
     enable_similar_image_filter: bool = True,
     seed: int = 2,
@@ -54,7 +54,7 @@ def main(
         The prompt to generate images from.
     scale : float, optional
         The scale of the image, by default 1.0.
-    acceleration : Literal["none", "xformers", "tensorrt"]
+    acceleration : Literal["none", "xformers", "sfast", "tensorrt"]
         The type of acceleration to use for image generation.
     use_denoising_batch : bool, optional
         Whether to use denoising batch or not, by default True.
@@ -115,7 +115,7 @@ def main(
 
 demo = gr.Interface(
     main,
-    gr.Video(), 
+    gr.Video(sources=['upload', 'webcam']), 
     "playable_video"
 )
 demo.launch()
